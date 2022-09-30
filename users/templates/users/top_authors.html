@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+	<legend class="border-bottom mb-4">Top authors</legend>
+	
+		{% for profile in profiles %}
+			<!-- <img class="profile-pic" src="{{ profile.profile_pic.url }}">
+			<span><a href="{% url 'profile' profile.user %}" style="color: #3b3b3b">{{ profile.user }}</a></span> 
+			<br><hr> -->
+			<div class="blog-section">
+				{% include 'users/base_profile.html' %}
+				<form action="{% url 'profile' profile.user %}" style="display: inline">
+					<button class="btn btn-outline-dark btn-sm" type="submit">View profile</button>
+				</form>
+				<br>
+			</div>
+			<br>
+
+		{% endfor %}
+	
+	
+{% endblock content %}

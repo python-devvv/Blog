@@ -1,0 +1,18 @@
+{% if request.user != profile.user %}
+	{% if is_follow %}
+		<form action="{% url 'follow-profile' profile.user.username %}" id="follow" value="{{ profile.user.username }}" style="display: inline">
+			<button class="btn btn-outline-dark btn-sm" type="submit">Following</button>
+		</form>
+	{% else %}
+		<form action="{% url 'follow-profile' profile.user.username %}" id="follow" value="{{ profile.user.username }}" style="display: inline">
+			<button class="btn btn-outline-dark btn-sm" type="submit">Follow</button>
+		</form>
+	{% endif %}
+	<br>
+{% else %}
+	<form action="{% url 'edit-profile' %}" style="display: inline">
+		<button class="btn btn-outline-dark float-right btn-sm" type="submit" >Edit profile</button>
+	</form>
+	<br>
+{% endif %}
+<br>

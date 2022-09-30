@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load humanize %}
+{% load search_highlighter %}
+{% block content %}
+    {% if results %}
+      {% for post in results %}
+        <div class="blog-section mb-3">
+          <div class="media">
+            <img class="profile-pic img-thumbnail" src="{{ post.author.profile.profile_pic.url }}">
+            <div class="media-body">
+              <strong><a href="{% url 'profile' post.author %}" style="color: #3b3b3b">{{ post.author }}</a></strong>
+              <br>
+              <small class="text-muted">{{ post.date_posted | naturaltime }}</small>
+            </div> 
+          </div>
+          <hr>
+          <div class="blog-title">
+            <h5><a href="{% url 'post-detail' post.slug %}" style="color: #3b3b3b">{{ post.title | safe | highlight_search:search_word }}</a></h5>
+          </div>
+          <div class="blog-content text-muted">
+            <p style="height: 4.5rem; line-height: 1.5rem; overflow: hidden;">{{ post.content | safe | highlight_search:search_word }}</p>
+            <a href="{% url 'post-detail' post.slug %}">Read more</a>
+            <span><small class="ml-2 float-right">{{ post.like.count }} like{{ post.like.count | pluralize }}</small></span>
+          </div>
+
+        </div>
+      {% endfor %}
+    {% endif %}
+{% endblock content %}

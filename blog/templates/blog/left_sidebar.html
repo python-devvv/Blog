@@ -1,0 +1,20 @@
+{% if user.is_authenticated %}
+	<div class="left-sidebar">
+		  <a href="{% url 'new-post' %}">New post</a><br><hr>
+		  <a href="{% url 'top-posts' %}">Top posts</a><br><hr>
+		  <a href="{% url 'top-authors' %}">Top authors</a><br><hr>
+		  <a href="{% url 'bookmarks' %}">Bookmark</a><br><hr>
+		  <a href="{% url 'profile' request.user %}">Profile</a><br><hr>
+		  <a href="{% url 'feedback' %}">Feedback</a><br><hr>
+		  <a href="{% url 'logout' %}">Logout</a><br><hr>
+	</div>
+
+{% else %}
+
+	<div class="left-sidebar">
+		  <a href="{% url 'new-post' %}">New post</a><br><hr>
+		  <a href="{% url 'top-posts' %}">Top posts</a><br><hr>
+		  <a href="{% url 'top-authors' %}">Top authors</a><br><hr>
+		  <a href="{% url 'bookmarks' %}">Bookmark</a><br><hr>
+	</div>
+{% endif %}

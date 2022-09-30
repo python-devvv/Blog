@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+	<legend class="border-bottom mb-4">Bookmarks</legend>
+	{% for post in posts %}
+		{% include 'blog/post_list.html' %}
+	{% endfor %}
+
+{% endblock content %}
