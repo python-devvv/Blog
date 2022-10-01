@@ -20,7 +20,7 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
-			self.slug ="%s-%s" %(slugify(self.title, allow_unicode=True), secrets.token_hex(10))
+			self.slug =f"{slugify(self.title, allow_unicode=True)}-{secrets.token_hex(10)}"
 		return super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
