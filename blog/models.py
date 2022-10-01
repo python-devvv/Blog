@@ -12,8 +12,9 @@ class Post(models.Model):
 	date_posted = models.DateTimeField(default=timezone.now, verbose_name = "Date posted")
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "author")
 	slug = models.SlugField(max_length=200, unique=True)
-	bookmark = models.ManyToManyField(User, related_name='bookmark', blank=True)
-	like = models.ManyToManyField(User, related_name='like', blank=True)
+	bookmark = models.ManyToManyField(User, related_name='bookmark', blank=True, null=True)
+	like = models.ManyToManyField(User, related_name='like', blank=True, null=True)
+	updated_date = models.DateTimeField(auto_now=True, verbose_name="Updated date") # Adding updated date
 
 	def __str__(self):
 		return self.title
