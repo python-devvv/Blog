@@ -10,5 +10,5 @@ urlpatterns = [
     path('<slug>/delete/', delete_post, name='delete-post'),
     path('top-posts/', top_posts, name='top-posts'),
     path('<slug>/', post_detail, name='post-detail'),
-    
+
 ]
