@@ -23,6 +23,8 @@ def register(request):
 
 	return render(request, 'users/register.html', {'form': form, 'title' : 'Blog | Register'})
 
+# Only loggedin users can view author's profile
+@login_required
 def profiles(request, username):
 	p_user = get_object_or_404(User, username=username)
 	profile = get_object_or_404(Profile, user=p_user)
@@ -116,6 +118,8 @@ def my_bookmarks(request):
 
 	return render (request, 'users/my_bookmarks.html', context)
 
+# only loggedin users can view top authors
+@login_required
 def top_authors(request):
 	
 	profiles = Profile.objects.all().annotate(num_follow=Count('follow')).order_by('-num_follow')[:5]
