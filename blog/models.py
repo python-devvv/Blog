@@ -20,7 +20,8 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
-			self.slug =f"{slugify(self.title, allow_unicode=True)}-{secrets.token_hex(10)}"
+			# Updating slug to more unique with the combination of multiple values
+			self.slug =f"{slugify(self.title+self.author+self.content[:10], allow_unicode=True)}-{secrets.token_hex(40)}"
 		return super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
