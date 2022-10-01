@@ -147,7 +147,7 @@ def search(request):
 	search_query = request.GET.get('user_search_input')
 
 	if search_query:
-		results = Post.objects.filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-date_posted')
+		results = Post.objects.filter(Q(title__icontains=search_query) | Q(content__icontains=search_query)).order_by('-date_posted', 'content')
 	else:
 		return HttpResponse("Access denied")
 	context={
