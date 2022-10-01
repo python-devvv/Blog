@@ -10,12 +10,12 @@ class UserRegisterForm(UserCreationForm):
 
 	class Meta:
 		model = User
-		fields = ['username', 'email', 'password1', 'password2']
+		fields = "__all__"
 
 	def __init__(self, *args, **kwargs):
 		super(UserRegisterForm, self).__init__(*args, **kwargs)
 		self.fields['password1'].help_text = "Passwords must be of minimun 8 charectors"
-		self.fields['username'].help_text = ""
+		self.fields['username'].help_text = "Passwords must be of minimun 8 charectors"
 
 	def clean(self):
 		cleaned_data = self.cleaned_data
@@ -43,10 +43,10 @@ class UserRegisterForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = ['bio', 'profile_pic']
+		fields = "__all__"
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
     	model = Feedback
-    	fields = ['feedback', 'subject']
+    	fields = "__all__"
   
