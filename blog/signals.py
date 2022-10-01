@@ -5,7 +5,6 @@
 # from .models import Post
 
 
-
 # def create_slug(instance, new_slug=None):
 # 	slug = slugify(instance.title)
 # 	if new_slug is not None:
