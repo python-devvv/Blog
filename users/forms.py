@@ -3,9 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from .models import Profile, Feedback
+from django.core.validators import MaxLengthValidator, MinLengthValidator
     
 class UserRegisterForm(UserCreationForm):
-
+	username = forms.CharField(
+		validators=[MinLengthValidator(5), MaxLengthValidator(15)],
+		help_text='Username should be Alphanumeric of length 5 to 15'
+	    )
 	email = forms.EmailField()
 
 	class Meta:
