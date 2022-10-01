@@ -75,6 +75,9 @@ def edit_post(request, slug):
 				edit_form.save()
 				messages.success(request, f'Your changes has been updated successfully!!')
 				return HttpResponseRedirect(post.get_absolute_url())
+			else:
+				messages.error(request, f'Something went wrong!')
+				return redirect('home')
 		else:
 			edit_form=PostEditForm(instance=post)
 	else:
@@ -95,7 +98,8 @@ def delete_post(request, slug):
 		messages.success(request, f'Your post has been deleted successfully!!')
 		return redirect('home')
 	else:
-		return HttpResponseRedirect(post.get_absolute_url())
+		messages.error(request, f'something went wrong!')
+		return redirect('home')
 
 
 @login_required
