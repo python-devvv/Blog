@@ -13,8 +13,8 @@ from django.core.paginator import Paginator
 
 def home(request):
 
-	qs = Post.objects.all().order_by('-date_posted')
-	paginator = Paginator(qs, 5)
+	post_data = Post.objects.all().order_by('-id', 'content')
+	paginator = Paginator(post_data, 10)
 
 	page_number = request.GET.get('page')
 	posts = paginator.get_page(page_number)
