@@ -3,7 +3,8 @@
 
 <div class="blog-section mb-3">
 	<div class="media">
-	  <img class="profile-pic img-thumbnail" src="{{ post.author.profile.profile_pic.url }}">
+	<a href="{% url 'profile' post.author %}"><img class="profile-pic img-thumbnail" src="{{ post.author.profile.profile_pic.url }}"></a>
+	  
 	  <div class="media-body">
 	  	<strong><a href="{% url 'profile' post.author %}" style="color: #3b3b3b">{{ post.author }}</a></strong>
 	  	<br>
