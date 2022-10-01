@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 import secrets
 from django.urls import reverse
 
 
 class Post(models.Model):
 	title = models.CharField(max_length=100, verbose_name = "Post title")
-	content = models.TextField(verbose_name = "Post content")
+	content = RichTextField(verbose_name = "Post content")
 	date_posted = models.DateTimeField(default=timezone.now, verbose_name = "Date posted")
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "author")
 	slug = models.SlugField(max_length=200, unique=True)
