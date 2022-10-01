@@ -41,7 +41,7 @@ def new_post(request):
 
 def post_detail(request, slug):
 	post = get_object_or_404(Post, slug=slug)
-	title = "Blog - {}".format(post.title)
+	title = f"Blog - {post.title}"
 
 	# Bookmark logic
 	is_bookmark = False
