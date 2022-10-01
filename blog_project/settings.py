@@ -129,8 +129,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+if os.environ.get("ENVIRONMENT") in ("PROD", "DEV", "STAGING"):
+    # server timezone is UTC
+    TIME_ZONE = 'UTC'
+else:
+    # local timezone is IST
+    TIME_ZONE = 'Asia/Kolkata'
+    
 USE_I18N = True
 
 USE_L10N = True
