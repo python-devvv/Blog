@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import profiles, follow_profile, register, edit_profile, my_bookmarks, top_authors, feedback
 from django.contrib.auth import views as auth_views
 
