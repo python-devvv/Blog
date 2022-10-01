@@ -66,6 +66,6 @@ body {
 
 /* search */
 
-.highlight {
-background-color: rgba(94, 151, 242, 0.5);
+.search-highlight {
+background-color: #fce6a7;
  }
