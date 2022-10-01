@@ -33,7 +33,8 @@ class Profile(models.Model):
 
 class Feedback(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	subject = models.CharField(max_length=30)
 	feedback = models.TextField(default='', null=True, blank=False)
 
 	def __str__(self):
-		return f"{self.user.username}'s Feedback"
+		return f"{self.user.username}'s Feedback | {self.subject}"
