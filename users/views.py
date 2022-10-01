@@ -31,7 +31,7 @@ def profiles(request, username):
 	like_count = posts.aggregate(Count('like'))['like__count']
 	author_top_posts = posts.annotate(num_likes=Count('like')).order_by('-num_likes')
 	following = Profile.objects.filter(follow=p_user)
-	title = "Blog | Profile - {}".format(p_user)
+	title = f"Blog | Profile - {p_user}"
 
 	#Follow logic 
 
