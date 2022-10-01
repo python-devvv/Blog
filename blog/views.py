@@ -20,7 +20,7 @@ def home(request):
 	posts = paginator.get_page(page_number)
 	context = {
 	'posts' : posts,
-	'title' : 'Blog | Home'
+	'title' : 'Blog - Home'
 	}
 	return render(request, 'blog/home.html', context)
 
@@ -37,11 +37,11 @@ def new_post(request):
 			return redirect('home')
 	else:	
 		form = NewPostForm()
-	return render(request, 'blog/new_post.html', {'form':form, 'title' : 'Blog | New-post'})
+	return render(request, 'blog/new_post.html', {'form':form, 'title' : 'Blog - Add new post'})
 
 def post_detail(request, slug):
 	post = get_object_or_404(Post, slug=slug)
-	title = "Blog | {}".format(post.title)
+	title = "Blog - {}".format(post.title)
 
 	# Bookmark logic
 	is_bookmark = False
@@ -82,7 +82,7 @@ def edit_post(request, slug):
 		
 	context = {
 	'edit_form' : edit_form,
-	'title' : 'Blog | Edit-post'
+	'title' : 'Blog - Edit blog post'
 	}
 
 	return render(request, 'blog/edit_post.html', context)
@@ -138,7 +138,7 @@ def top_posts(request):
 
 	context = {
 	'posts' : posts,
-	'title' : 'Blog | Top-posts'
+	'title' : 'Blog - Top five posts'
 	}
 
 	return render(request, 'blog/top_posts.html', context)
@@ -152,6 +152,7 @@ def search(request):
 		return HttpResponse("Access denied")
 	context={
 	'results' : results,
-	'search_word' : search_query
+	'search_word' : search_query,
+	'title' : 'Blog - search results'
 	}
 	return render(request, 'blog/search.html', context)
