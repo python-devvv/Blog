@@ -47,7 +47,7 @@ class UserRegisterForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
-		fields = "__all__"
+		fields = ["bio", "profile_pic", "email_id"]
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
