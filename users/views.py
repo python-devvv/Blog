@@ -108,8 +108,8 @@ def follow_profile(request, username):
 @login_required
 def my_bookmarks(request):
 	user = request.user
-	bookmarks_qs = user.bookmark.all()
-	bookmarks = list(reversed(bookmarks_qs))
+	bookmarks_qs = user.bookmark.filter("-id", "subject", "content)
+	bookmarks = list(bookmarks_qs)
 
 	context={
 	'posts': bookmarks,
