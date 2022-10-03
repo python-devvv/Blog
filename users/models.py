@@ -32,10 +32,13 @@ class Profile(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.profile_pic.path)
 
+FEEDBACK_RATING_CHOICE = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
+
 class Feedback(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	subject = models.CharField(max_length=30)
 	feedback = models.TextField(default='', null=True, blank=False)
+	rating = models.ChoiceField(choices=FEEDBACK_RATING_CHOICE, max_length=2, null=False)
 
 	def __str__(self):
 		return f"{self.user.username}'s Feedback | {self.subject}"
