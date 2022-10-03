@@ -6,6 +6,9 @@ from ckeditor.fields import RichTextField
 import secrets
 from django.urls import reverse
 
+# adding Unique constrain to email in User model
+User._meta.get_field('email')._unique = True     
+
 
 class Post(models.Model):
 	title = models.CharField(max_length=100, verbose_name = "Post title")
