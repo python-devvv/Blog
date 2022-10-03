@@ -10,6 +10,7 @@ class Profile(models.Model):
 	bio = models.TextField(default='', null=True, blank=True)
 	profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
 	follow = models.ManyToManyField(User, related_name='follow', blank=True)
+	email_id = models.EmailField(null=True, blank=True)  # adding email id
 
 
 	def __str__(self):
